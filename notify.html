@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Get Notified — The Rocks Behind That Waterfall</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='34' r='20' fill='%234F7C8C'/%3E%3Cellipse cx='32' cy='54' rx='24' ry='5' fill='%2316232B' opacity='0.25'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@1,500;1,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --deep:#16232B; --dusk:#2B4753; --current:#4F7C8C; --current-light:#9FC4CC;
+    --mist:#E9F1F0; --mist-deep:#DAE7E6; --foam:#F8FBFA; --ink:#1E2A2D;
+    --stone:#71838A; --pebble:#C7D4D4; --hairline:rgba(30,42,45,0.12);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){ *{animation:none !important; transition:none !important;} }
+  body{margin:0;background:var(--mist);font-family:'IBM Plex Sans',-apple-system,Arial,sans-serif;color:var(--ink);}
+  .serif{font-family:'Newsreader',Georgia,serif;font-style:italic;}
+  .mono{font-family:'IBM Plex Mono',monospace;}
+
+  #nav-tab{position:fixed;top:18px;right:18px;z-index:50;width:44px;height:44px;border-radius:50%;background:var(--deep);color:var(--foam);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(22,35,43,0.28);}
+  #nav-tab:focus-visible{outline:2px solid var(--current-light);outline-offset:3px;}
+  #nav-panel{position:fixed;top:70px;right:18px;z-index:49;background:var(--deep);border-radius:16px;padding:8px;min-width:230px;box-shadow:0 12px 30px rgba(22,35,43,0.35);opacity:0;transform:translateY(-8px);pointer-events:none;transition:opacity .2s ease, transform .2s ease;}
+  #nav-panel.open{opacity:1;transform:translateY(0);pointer-events:auto;}
+  #nav-panel .nav-link{display:block;padding:11px 14px;border-radius:10px;color:var(--foam);text-decoration:none;font-size:14.5px;}
+  #nav-panel .nav-link:hover, #nav-panel .nav-link:focus-visible{background:rgba(159,196,204,0.14);}
+  #nav-panel .nav-link.current{color:var(--current-light);font-weight:600;}
+  #nav-panel .nav-note{padding:10px 14px 4px;margin:2px 0 0;font-size:10.5px;letter-spacing:.4px;color:var(--stone);border-top:1px solid rgba(159,196,204,0.15);}
+
+  .topband{background:radial-gradient(130% 160% at 18% 0%, var(--dusk) 0%, var(--deep) 62%, #0C1418 100%);color:var(--foam);padding:80px 24px 54px;position:relative;z-index:1;}
+  .kicker{font-size:11.5px;letter-spacing:2.5px;font-weight:600;color:var(--current-light);text-transform:uppercase;margin-bottom:14px;}
+  .h1{font-size:clamp(32px,8vw,52px);line-height:1.08;font-weight:600;margin:0;max-width:480px;}
+  .h1 .accent{color:var(--current-light);}
+
+  /* ---- Ambient background (runs continuously, very low opacity) ---- */
+  .bg-rain{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:0;}
+  .bg-rain span{position:absolute;top:-15%;width:1.5px;height:12%;background:linear-gradient(to bottom, transparent, var(--current-light) 45%, transparent);opacity:.16;animation-name:rain-fall;animation-timing-function:linear;animation-iteration-count:infinite;}
+  @keyframes rain-fall{0%{transform:translateY(0);}100%{transform:translateY(125vh);}}
+
+  main{position:relative;z-index:1;max-width:520px;margin:0 auto;padding:48px 24px 40px;}
+  .p{font-size:16.5px;line-height:1.75;margin:0 0 22px;color:var(--ink);}
+
+  form{display:flex;flex-direction:column;gap:16px;margin-top:8px;}
+  label{font-size:12.5px;letter-spacing:.4px;text-transform:uppercase;color:var(--stone);font-family:'IBM Plex Mono',monospace;display:block;margin-bottom:6px;}
+  input{width:100%;font-family:'IBM Plex Sans',sans-serif;font-size:15.5px;padding:12px 14px;border-radius:10px;border:1px solid var(--pebble);background:var(--foam);color:var(--ink);}
+  input:focus{outline:2px solid var(--current);outline-offset:1px;}
+  button{align-self:flex-start;background:var(--current);color:var(--foam);border:none;border-radius:10px;padding:13px 26px;font-size:15px;font-weight:600;cursor:pointer;}
+  button:hover{background:var(--dusk);}
+  .honeypot{position:absolute;left:-9999px;}
+
+  footer{max-width:520px;margin:16px auto 60px;padding:24px 24px 0;border-top:1px solid var(--hairline);position:relative;z-index:1;}
+  .foot-note{font-size:12px;letter-spacing:.5px;text-transform:uppercase;color:var(--stone);font-family:'IBM Plex Mono',monospace;margin:0;}
+  .signature{width:200px;height:auto;display:block;}
+  .signature .sig-letters{fill:var(--deep);}
+  .signature .sig-wave{stroke:var(--current);}
+</style>
+</head>
+<body>
+
+<div class="bg-rain" aria-hidden="true">
+  <span style="left:4%;animation-duration:9s;animation-delay:-2s;"></span>
+  <span style="left:12%;animation-duration:12s;animation-delay:-6s;"></span>
+  <span style="left:20%;animation-duration:8s;animation-delay:-1s;"></span>
+  <span style="left:29%;animation-duration:14s;animation-delay:-9s;"></span>
+  <span style="left:38%;animation-duration:10s;animation-delay:-4s;"></span>
+  <span style="left:47%;animation-duration:11s;animation-delay:-7s;"></span>
+  <span style="left:56%;animation-duration:9.5s;animation-delay:-3s;"></span>
+  <span style="left:65%;animation-duration:13s;animation-delay:-10s;"></span>
+  <span style="left:74%;animation-duration:8.5s;animation-delay:-5s;"></span>
+  <span style="left:83%;animation-duration:12.5s;animation-delay:-2.5s;"></span>
+  <span style="left:91%;animation-duration:10.5s;animation-delay:-8s;"></span>
+  <span style="left:97%;animation-duration:9s;animation-delay:-6.5s;"></span>
+</div>
+
+<button id="nav-tab" aria-expanded="false" aria-controls="nav-panel" aria-label="Open navigation menu">
+  <svg width="18" height="14" viewBox="0 0 20 14"><rect y="0" width="20" height="2" rx="1" fill="currentColor"/><rect y="6" width="20" height="2" rx="1" fill="currentColor"/><rect y="12" width="20" height="2" rx="1" fill="currentColor"/></svg>
+</button>
+<div id="nav-panel" role="dialog" aria-label="Site navigation">
+  <a href="index.html" class="nav-link">Prologue</a>
+  <a href="about.html" class="nav-link">About the Author</a>
+  <a href="request-copy.html" class="nav-link">Request a Printed Copy</a>
+  <a href="notify.html" class="nav-link current">Get Notified</a>
+  <p class="nav-note mono">More stories arriving over time.</p>
+</div>
+
+<div class="topband">
+  <div class="kicker">Stay in the loop</div>
+  <h1 class="h1 serif">I'll let you know <span class="accent">when something new arrives</span></h1>
+</div>
+
+<main>
+  <p class="p">No newsletter, no automation, no noise — just an email from me, whenever a new story actually goes up. Leave your address and I'll add you to the list myself.</p>
+
+  <!-- Netlify Forms: detected automatically at deploy time because of data-netlify.
+       Submissions appear in your Netlify site dashboard under "Forms" — export
+       or copy addresses out from there and send updates from your own inbox. -->
+  <form name="notify-me" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+    <input type="hidden" name="form-name" value="notify-me" />
+    <p class="honeypot"><label>Don't fill this out: <input name="bot-field" /></label></p>
+
+    <div>
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required>
+    </div>
+
+    <button type="submit">Notify me</button>
+  </form>
+</main>
+
+<footer>
+  <svg class="signature" viewBox="0 0 550 235" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Riche Lim">
+    <g transform="translate(46,52) rotate(-5.5)">
+      <path class="sig-letters" d="M342.25 0L347.5 0L349.25 0.5L350.5 1.5L350.87 2.75L350.62 4L348.25 7.25L341.5 12.33L332.5 17.33L322 21.83L311.25 25.5L301.75 37.5L279 67.75L286.75 69.25L292.75 71.75L296.5 74.25L307 83L310.25 85L314.75 86.75L320.5 87.58L324.5 87.08L327.5 86.08L335.25 82.38L335.87 83L335.25 84.42L332.75 86.33L330.25 87.58L323 89.83L317 90.33L309.75 89.33L306.5 88.25L300.5 84.83L290.25 75.5L286.75 73L281.5 70.75L277.25 70.08L268.25 81L259.83 89.75L254.5 94.33L251 96.5L246 98.33L243 98.42L241 97.75L240.17 96.75L239.88 95.5L240 93.75L240.75 91.5L243 87.75L250.25 80L254.25 76.67L259 73.42L266.75 69.67L272.75 68L293.75 40.5L304.5 27.5L286 31.33L268.75 33.33L252.75 33.75L249.75 33L249.38 32.25L249.75 31.33L252.25 29.67L253.5 29.5L259.75 30.13L267.5 30.33L281.5 29.33L294.5 27.08L307.25 23.83L308 23.5L318.25 13.25L325.5 7.42L331 3.92L334.5 2.17L337.75 0.92L342.25 0ZM24 1.5L33.75 1.42L39.75 2.13L46.75 3.88L53.5 7L57.5 10.75L59.58 14.5L60.33 17.25L60.5 20L60 24.38L70.75 16.42L77.25 12.17L84.75 7.92L92 4.67L98.5 2.67L106 1.88L109.5 2.5L111 3.75L111.83 5.25L111.87 8L111 11.25L107.25 18L100.58 26.25L96.25 30.75L91.25 35.17L82.5 41.58L77.5 44.33L74.25 45.58L68.75 46.25L65.75 45.83L62.25 44.5L61.87 44.75L61.92 57.25L63.42 69L65.17 75.75L66.92 79.5L68.58 82L71.5 85L75 86.75L77.75 86.92L81.25 86.33L91.75 82.5L92.62 83L92.25 84L91.5 84.58L81.5 89.08L77.5 90.08L74.25 90.33L70.75 89.75L68 88.5L66.25 87.25L63.5 84L60.67 77.75L58.92 69.25L57.92 59.75L57.33 38L56.75 36.75L55.25 36.5L52 42.75L45 53.75L37.5 64L30.5 72.75L23.5 80.75L14.75 89.58L8.25 95.08L4.75 97.08L1.75 97.25L0.17 96L-0.12 94.25L0.5 91.25L3 86L7.75 78.75L13 71.75L21.25 61.75L31 51L40.5 41.5L53.58 29.75L54.75 26.5L55.83 19L55.08 14.5L54.25 12.75L52.25 10.08L49.75 8L46.25 6.25L41 4.75L34.75 3.75L31 3.58L24.5 3.67L18.25 4.42L15.25 5.17L12.25 6.67L10.75 8.25L10.17 10.25L10.92 12.5L13.5 14.75L18.75 17.25L30 21.25L35.25 24.5L38 27.5L39.58 30.75L39.83 34L39.62 35.5L39 36.58L38.25 36.62L37.67 36L37.33 33.25L36.25 31L34.5 29L32.5 27.5L27.5 24.75L13.25 19.5L8.5 16.75L6.67 15L5.42 12.5L6 8.75L7.75 6.5L10 4.92L14.25 3.17L24 1.5ZM342 2L339 2.42L335 3.92L329 7.67L323.5 12.25L315 21L318.5 20L332.25 14.33L338.75 10.83L343.5 7.67L346 5.25L346.58 3.5L345.5 2.37L342 2ZM101 5L97 5.67L92.5 7.17L81.75 12.42L71.75 18.92L58.5 29L56.5 34.25L60.67 34.5L61.5 39.5L63.25 41.75L66 43.38L68 43.88L71.25 43.88L74 43.08L79.75 39.83L87.25 33.5L92 28.75L96.25 23.75L99.25 19.75L103.75 12.5L105.25 8.25L105.17 6L103.75 4.92L101 5ZM193 19.75L194.75 19.67L196.08 20.5L196.08 21.75L195.5 23L178 48L158.25 77.75L158.25 79L159 78.92L163.5 74.75L173 67.42L176.5 65.42L178 64.92L179.5 65L180.5 65.75L181.08 67L180.5 69.5L173.75 79.75L171.75 84L172.25 86.25L173.75 86.33L178.25 83.83L188.5 76.67L196.75 70.25L201 66.08L205 62.92L209 60.92L212.5 60.67L214.08 61.75L214.58 63.5L214 66L212.5 68.5L206.5 74.25L195.62 81.75L195.67 84L196.75 86L199 86.83L201.75 86.67L206.25 85.33L212.75 81.58L221.75 75.17L229.25 68.92L231 68.38L231.5 69.25L219.25 79.08L209.25 85.83L203.5 88.58L200.25 89.58L196.5 90.08L194.5 90L192.25 89.25L190.92 87.75L190.42 86.25L190.75 81L191.75 78L193 75.75L174.25 88.83L170.25 90.37L167.25 90L166.42 89.25L165.92 87.75L166.5 84.75L169 79.5L175.08 69L174.5 68.5L172.5 69.42L166.08 74.5L151 88.25L148 90.17L147.17 89.75L147.13 88L155.5 74.58L148.25 80.08L140.25 85.33L134.5 88.33L128 90.33L123.5 90.33L121.75 89.42L120.67 88L120.17 86.5L120 83.75L121.5 78.08L108.5 87.08L102.25 90.33L99.25 90L98.17 88.75L98.13 86.5L99.5 82.5L103 76L106.75 70.25L109.17 67.25L112 64.92L113 64.75L114.25 65.13L114.83 66.5L113 70L107.25 77.5L104.5 82L103.83 85.25L104.08 86L105 86.5L108.75 84.83L119 77.83L124.25 73.92L129.25 69L132.75 66.42L138.25 63.92L143.75 63.08L147.25 63.75L148.08 65.25L147.5 67.25L145.25 70.25L143.5 71.75L142 72.33L140 71.5L140 70.25L142.75 67.25L142.88 66.5L142.25 65.87L140.5 65.92L136.75 67.67L133.5 70.25L128 76.25L125.25 81L124.67 83.75L124.87 85.25L125.75 86.5L127.75 87.25L131.25 87.13L135.5 85.83L143.5 81L151.5 75.25L159.75 68.5L190 22.25L191.25 20.67L193 19.75ZM51.5 34.92L43 42.5L33.25 52L24 62L15.5 72.25L7.75 83.5L4.87 90L4.42 92.5L4.75 93.75L6 93.58L8.25 92.33L13.5 87.83L21.75 79.25L29.25 70.25L38 58.5L43.5 50.25L47.5 43.5L51.5 34.92ZM120.13 52.75L121.5 52.75L122.58 53.5L123.08 54.75L123 56.25L121.33 58.75L120.25 59.83L118.5 60.75L117.5 60.75L116.25 60L115.75 57.75L117.5 55L120.13 52.75ZM359.13 52.75L360.5 52.75L361.58 53.5L362.08 54.5L362.08 56L359.75 59.42L357.75 60.67L356.5 60.75L355.5 60.25L354.75 58L356.5 55L359.13 52.75ZM208.5 64.25L207.25 64.42L204.75 65.83L200.75 69.75L197.75 74.25L196.17 78.5L197 78.17L204 73.08L208.5 68.5L209.5 67L209.75 65.75L209.25 64.5L208.5 64.25ZM350.88 65L352 64.75L353.25 65.13L353.83 65.75L353.75 67L351.5 70.75L345.75 78.25L343.25 82.75L342.92 85.5L344 86.5L346.5 85.58L349.75 83.58L362.75 74.33L369.5 68.92L369.92 68L369.75 66.5L370.5 66.17L372.25 66.08L373.25 66.5L373.67 67.75L373.37 69.25L371.25 73.25L365.5 82L365.75 82.5L387.25 66.67L389.75 65.75L391.25 66L391.75 66.5L391.87 67.75L391.25 69.75L381.75 82.25L381.37 83.25L382 83.83L384.75 82.33L404 68.67L406.25 67.58L407.75 67.92L408.12 68.75L408 69.75L406.75 72.25L400.25 80.25L397.75 84L397.67 85.75L398.75 86.5L402.5 84.83L409.25 80.33L424 69.08L425.75 68.33L426.42 68.5L426.5 69.42L414.5 79.08L404 86.58L397.25 90.08L395 90.42L393 90L391.92 88.75L391.83 87.25L392.25 85.5L393.5 83L398.5 76L398.75 75.5L398.5 75L379.5 87.83L377.25 88.62L376.5 88.5L375.5 87.5L375.25 86.25L376.5 83.25L385.25 71.5L385.42 70.5L384.75 70.17L360 89.33L358.25 89.25L357.42 88.5L357.25 87.75L357.75 86.25L366 74L348.75 86.33L343.25 89.58L340.25 90.42L338.25 89.92L337.17 88.5L337.17 86.5L338 83.75L340.75 78.25L345.25 71L348.42 67L350.88 65ZM270 70.67L265 72.42L261.5 74.17L256.5 77.42L251.75 81.25L246 87L244 89.75L243 91.75L242.62 93.5L242.92 94.5L243.5 95L244.75 95.25L247.75 94.58L251.25 92.5L254.5 89.75L264 79.25L270.5 71L270.5 70.62L270 70.67Z" fill-rule="evenodd"></path>
+      <path class="sig-wave" d="M2 137 C 52 135.4, 100 132, 152 126.6 C 218 119.6, 282 111.6, 344 100 C 372 94.8, 402 88, 430 79.5" fill="none" stroke-width="1.7" stroke-linecap="round"></path>
+    </g>
+  </svg>
+</footer>
+
+<script>
+  var navTab = document.getElementById('nav-tab');
+  var navPanel = document.getElementById('nav-panel');
+  navTab.addEventListener('click', function(e){
+    e.stopPropagation();
+    var isOpen = navPanel.classList.toggle('open');
+    navTab.setAttribute('aria-expanded', isOpen);
+  });
+  document.addEventListener('click', function(e){
+    if (!navPanel.contains(e.target)) {
+      navPanel.classList.remove('open');
+      navTab.setAttribute('aria-expanded', 'false');
+    }
+  });
+</script>
+</body>
+</html>
