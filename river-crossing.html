@@ -35,6 +35,7 @@
   #nav-panel .nav-link.current{color:var(--current-light);font-weight:600;}
   #nav-panel .nav-note{padding:10px 14px 4px;margin:2px 0 0;font-size:10.5px;letter-spacing:.4px;color:var(--stone);border-top:1px solid rgba(159,196,204,0.15);}
   #nav-panel .home-link{border-bottom:1px solid rgba(159,196,204,0.15);margin-bottom:4px;padding-bottom:13px;color:var(--current-light);}
+  #nav-panel .nav-section-label{padding:12px 14px 5px;margin:0;font-size:10px;letter-spacing:1.2px;text-transform:uppercase;color:var(--stone);font-family:'IBM Plex Mono',monospace;}
 
   /* ---- Hero ---- */
   .hero{min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;position:relative;overflow:hidden;background:radial-gradient(130% 140% at 18% 100%, var(--dusk) 0%, var(--deep) 62%, #0C1418 100%);color:var(--foam);padding:32px 24px 56px;z-index:1;}
@@ -130,8 +131,10 @@
 </button>
 <div id="nav-panel" role="dialog" aria-label="Site navigation">
   <a href="https://richelim.com" class="nav-link home-link">← Riche Lim</a>
+  <p class="nav-section-label mono">Stories</p>
   <a href="index.html" class="nav-link">Prologue</a>
   <a href="river-crossing.html" class="nav-link current">Notes on a River Crossing</a>
+  <p class="nav-section-label mono">Site</p>
   <a href="about.html" class="nav-link">About the Author</a>
   <a href="request-copy.html" class="nav-link">Request a Printed Copy</a>
   <a href="notify.html" class="nav-link">Get Notified</a>
