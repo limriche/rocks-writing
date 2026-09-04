@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>The Rocks Behind That Waterfall — Prologue</title>
-<meta name="description" content="An anti-fable short story collection about the things that block the flow. Read the prologue.">
+<title>Notes on a River Crossing — The Rocks Behind That Waterfall</title>
+<meta name="description" content="An anti-fable short story collection about the things that block the flow. Notes on a river crossing.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='34' r='20' fill='%234F7C8C'/%3E%3Cellipse cx='32' cy='54' rx='24' ry='5' fill='%2316232B' opacity='0.25'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -37,15 +37,15 @@
   #nav-panel .home-link{border-bottom:1px solid rgba(159,196,204,0.15);margin-bottom:4px;padding-bottom:13px;color:var(--current-light);}
 
   /* ---- Hero ---- */
-  .hero{min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;position:relative;overflow:hidden;background:radial-gradient(130% 140% at 18% 100%, var(--dusk) 0%, var(--deep) 62%, #0C1418 100%);color:var(--foam);padding:32px 24px 56px;}
+  .hero{min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;position:relative;overflow:hidden;background:radial-gradient(130% 140% at 18% 100%, var(--dusk) 0%, var(--deep) 62%, #0C1418 100%);color:var(--foam);padding:32px 24px 56px;z-index:1;}
   .ripple-field{position:absolute;inset:0;pointer-events:none;}
   .ripple{position:absolute;left:50%;bottom:-10%;border:1.5px solid rgba(159,196,204,0.35);border-radius:50%;transform:translateX(-50%);animation:ripple-out 7s ease-out infinite;}
   .ripple.r2{animation-delay:2.3s;} .ripple.r3{animation-delay:4.6s;}
   @keyframes ripple-out{0%{width:20px;height:20px;opacity:0;}12%{opacity:.7;}100%{width:900px;height:900px;opacity:0;}}
   .kicker{font-size:11.5px;letter-spacing:2.5px;font-weight:600;color:var(--current-light);text-transform:uppercase;position:relative;z-index:1;margin-bottom:14px;}
-  .h1{font-size:42px;line-height:1.06;font-weight:600;margin:0 0 16px;letter-spacing:-.5px;position:relative;z-index:1;max-width:520px;}
+  .h1{font-size:38px;line-height:1.1;font-weight:600;margin:0 0 16px;letter-spacing:-.5px;position:relative;z-index:1;max-width:520px;}
   .h1 .accent{color:var(--current-light);}
-  @media (min-width:600px){ .h1{font-size:60px;} }
+  @media (min-width:600px){ .h1{font-size:52px;} }
   .hero-sub{font-size:15.5px;line-height:1.6;color:#B9CFD1;max-width:420px;margin:0;position:relative;z-index:1;}
   .scroll-cue{align-self:center;margin-top:36px;position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:6px;color:var(--current-light);opacity:.85;}
   .scroll-cue span{font-size:10.5px;letter-spacing:1.8px;text-transform:uppercase;}
@@ -57,61 +57,50 @@
   .bg-rain span{position:absolute;top:-15%;width:1.5px;height:12%;background:linear-gradient(to bottom, transparent, var(--current-light) 45%, transparent);opacity:.16;animation-name:rain-fall;animation-timing-function:linear;animation-iteration-count:infinite;}
   @keyframes rain-fall{0%{transform:translateY(0);}100%{transform:translateY(125vh);}}
 
-  /* ---- Slide title: the opening title-card for a piece. Reuse this pattern
-     for every new story's opening — swap the text, keep the treatment. ---- */
-  .slide-title-wrap{opacity:0;transform:translateY(14px);transition:opacity .9s ease, transform .9s ease;margin-bottom:8px;}
-  .slide-title-wrap.is-visible{opacity:1;transform:translateY(0);}
-  .slide-title{font-size:clamp(32px,8vw,54px);line-height:1.1;font-weight:600;margin:0 0 44px;letter-spacing:-.5px;color:var(--deep);}
-  .slide-title .accent{color:var(--current);}
-
   main{position:relative;z-index:1;max-width:600px;margin:0 auto;padding:64px 24px 56px;}
-  .hero{z-index:1;}
   footer{position:relative;z-index:1;}
   .p{font-size:17px;line-height:1.75;margin:0 0 22px;color:var(--ink);}
   .p.fragment{font-style:italic;color:var(--dusk);}
+  .p.thesis{font-style:italic;font-weight:600;color:var(--deep);font-size:19px;}
+  .question-block{margin:0 0 26px;}
+  .question-block .p{margin:0 0 10px;}
 
-  /* ---- Between-paragraph accents (shared) ---- */
+  /* ---- Between-paragraph accents (shared reveal mechanism) ---- */
   .accent-wrap{position:relative;}
+  .accent-graphic{width:120px;height:66px;display:block;margin-bottom:12px;}
 
-  .rocks-cluster{width:120px;height:66px;display:block;margin-bottom:12px;}
-  .rocks-cluster .rock{opacity:0;transform-box:fill-box;transform-origin:50% 100%;}
-  .accent-wrap.is-visible .rocks-cluster .rock{animation:rock-drop 1s cubic-bezier(.34,1.56,.64,1) forwards;}
-  .accent-wrap.is-visible .rocks-cluster .rock1{animation-delay:0s;}
-  .accent-wrap.is-visible .rocks-cluster .rock2{animation-delay:.2s;}
-  .accent-wrap.is-visible .rocks-cluster .rock3{animation-delay:.4s;}
-  @keyframes rock-drop{
-    0%{transform:translateY(-30px) scale(.6);opacity:0;}
-    55%{transform:translateY(3px) scale(1.06);opacity:1;}
-    75%{transform:translateY(-2px) scale(.97);}
-    100%{transform:translateY(0) scale(1);opacity:1;}
-  }
-  .accent-wrap.is-visible .rocks-cluster{animation:cluster-bob 4.5s ease-in-out 1.6s infinite;}
-  @keyframes cluster-bob{0%,100%{transform:translateY(0);}50%{transform:translateY(-3px);}}
+  /* Accent 1 & 3: diverging paths — anxious (muted) and resolved (bold current) */
+  .path-l{opacity:0;stroke:var(--pebble);stroke-width:1.3;transform-box:fill-box;}
+  .path-end{opacity:0;fill:var(--stone);}
+  .accent-wrap.is-visible .path-l, .accent-wrap.is-visible .path-end{animation:path-fade .9s ease forwards;}
+  .accent-wrap.is-visible .path-l:nth-child(2){animation-delay:0s;}
+  .accent-wrap.is-visible .path-l:nth-child(3){animation-delay:.12s;}
+  .accent-wrap.is-visible .path-l:nth-child(4){animation-delay:.24s;}
+  .accent-wrap.is-visible .path-l:nth-child(5){animation-delay:.36s;}
+  .accent-wrap.is-visible .path-l:nth-child(6){animation-delay:.48s;}
+  @keyframes path-fade{to{opacity:1;}}
 
-  .still-graphic{width:120px;height:66px;display:block;margin-bottom:12px;}
-  .still-graphic .still-line{stroke:var(--pebble);stroke-width:1.5;opacity:0;transition:opacity 1s ease;}
-  .accent-wrap.is-visible .still-graphic .still-line{opacity:1;transition-delay:1.8s;}
-  .still-graphic .ripple-ring{fill:none;stroke:var(--current);stroke-width:1.4;opacity:0;transform-box:fill-box;transform-origin:center;}
-  .accent-wrap.is-visible .still-graphic .ripple-ring{animation:still-ripple 2.4s ease-out forwards;}
-  .accent-wrap.is-visible .still-graphic .ring2{animation-delay:.3s;}
-  .accent-wrap.is-visible .still-graphic .ring3{animation-delay:.6s;}
-  @keyframes still-ripple{0%{r:4;opacity:.8;}100%{r:30;opacity:0;}}
+  .path-r{opacity:0;stroke:var(--current);stroke-width:1.9;stroke-linecap:round;}
+  .accent-wrap.is-visible .path-r{animation:path-fade 1s ease forwards;}
+  .accent-wrap.is-visible .path-r:nth-child(2){animation-delay:0s;}
+  .accent-wrap.is-visible .path-r:nth-child(3){animation-delay:.1s;}
+  .accent-wrap.is-visible .path-r:nth-child(4){animation-delay:.2s;}
+  .accent-wrap.is-visible .path-r:nth-child(5){animation-delay:.3s;}
+  .accent-wrap.is-visible .path-r:nth-child(6){animation-delay:.4s;}
 
-  .triad{display:flex;gap:28px;align-items:center;margin:0 0 14px;}
-  .triad svg{width:46px;height:38px;opacity:0;transform:translateY(8px);transition:opacity .7s ease, transform .7s ease;}
-  .accent-wrap.is-visible .triad svg{opacity:1;transform:translateY(0);}
-  .triad svg:nth-child(2){transition-delay:.15s;}
-  .triad svg:nth-child(3){transition-delay:.3s;}
+  /* Accent 2: river with stepping stones */
+  .river-line{stroke:var(--current-light);stroke-width:1.6;opacity:0;fill:none;}
+  .accent-wrap.is-visible .river-line{animation:fade-in-slow 1.2s ease forwards;}
+  @keyframes fade-in-slow{to{opacity:.7;}}
+  .stone{fill:var(--current);opacity:0;transform-box:fill-box;transform-origin:center;}
+  .accent-wrap.is-visible .stone{animation:stone-drop .7s cubic-bezier(.34,1.56,.64,1) forwards;}
+  .accent-wrap.is-visible .stone:nth-child(2){animation-delay:.15s;}
+  .accent-wrap.is-visible .stone:nth-child(3){animation-delay:.3s;}
+  .accent-wrap.is-visible .stone:nth-child(4){animation-delay:.45s;}
+  .accent-wrap.is-visible .stone:nth-child(5){animation-delay:.6s;}
+  .accent-wrap.is-visible .stone:nth-child(6){animation-delay:.75s;}
+  @keyframes stone-drop{0%{opacity:0;transform:translateY(-8px) scale(.7);}100%{opacity:1;transform:translateY(0) scale(1);}}
 
-  .fall-graphic{width:120px;height:66px;display:block;margin-bottom:12px;}
-  .fall-graphic .fall-l{stroke:var(--current-light);stroke-width:1.6;stroke-linecap:round;opacity:0;}
-  .accent-wrap.is-visible .fall-graphic .fall-l{animation:fall-shimmer 2.6s ease-in-out infinite;}
-  .fall-graphic .fall-l:nth-child(2){animation-delay:.3s;}
-  .fall-graphic .fall-l:nth-child(3){animation-delay:.6s;}
-  @keyframes fall-shimmer{0%,100%{opacity:.2;}50%{opacity:.7;}}
-
-  footer{max-width:600px;margin:16px auto 60px;padding:24px 24px 0;border-top:1px solid var(--hairline);}
-  .foot-note{font-size:12px;letter-spacing:.5px;text-transform:uppercase;color:var(--stone);font-family:'IBM Plex Mono',monospace;margin:0;}
   .signature{width:200px;height:auto;display:block;}
   .signature .sig-letters{fill:var(--deep);}
   .signature .sig-wave{stroke:var(--current);}
@@ -140,10 +129,9 @@
   <svg width="18" height="14" viewBox="0 0 20 14"><rect y="0" width="20" height="2" rx="1" fill="currentColor"/><rect y="6" width="20" height="2" rx="1" fill="currentColor"/><rect y="12" width="20" height="2" rx="1" fill="currentColor"/></svg>
 </button>
 <div id="nav-panel" role="dialog" aria-label="Site navigation">
-  <!-- TODO: update this href once the hub is actually deployed (richelim.com or its interim URL) -->
   <a href="https://richelim.com" class="nav-link home-link">← Riche Lim</a>
-  <a href="index.html" class="nav-link current">Prologue</a>
-  <a href="river-crossing.html" class="nav-link">Notes on a River Crossing</a>
+  <a href="index.html" class="nav-link">Prologue</a>
+  <a href="river-crossing.html" class="nav-link current">Notes on a River Crossing</a>
   <a href="about.html" class="nav-link">About the Author</a>
   <a href="request-copy.html" class="nav-link">Request a Printed Copy</a>
   <a href="notify.html" class="nav-link">Get Notified</a>
@@ -154,96 +142,104 @@
   <div class="ripple-field" aria-hidden="true">
     <div class="ripple"></div><div class="ripple r2"></div><div class="ripple r3"></div>
   </div>
-  <div class="kicker">Prologue</div>
-  <h1 class="h1 serif">The Rocks Behind <span class="accent">That Waterfall</span></h1>
-  <p class="hero-sub">For whoever's current has gone still.</p>
+  <div class="kicker">The Rocks Behind That Waterfall</div>
+  <h1 class="h1 serif">Notes on <span class="accent">a river crossing</span></h1>
+  <p class="hero-sub">On leaving before you know what's waiting on the other side.</p>
   <div class="scroll-cue"><span class="mono">read</span><div class="chev"></div></div>
 </section>
 
 <main id="story">
 
-  <div class="slide-title-wrap" data-observe>
-    <h2 class="slide-title serif">For those reading this, <span class="accent">an introduction</span></h2>
-  </div>
+  <p class="p">I decided to move to the next chapter of my life, to move on from what I thought was a field of sinking quicksand — one that would trap me into a sense of unhappiness and restlessness the longer I stayed.</p>
 
-  <p class="p">There was a stream in me once. It moved every day — small, constant, unremarkable, mine. I would sit and write and the water would come gushing out, thoughts like stream of consciousness — sparking spirit and life.</p>
+  <p class="p">And I decided on this so quickly.</p>
 
-  <p class="p">In my twenties I thought I understood most of what mattered.</p>
+  <p class="p">But it turns out crossing the river when you're much older is not as easy as when you are early on in your career. And I'm not talking about this in the sense of physical capacity or stamina.</p>
 
-  <p class="p">I carried a kind of clarity then — arrogant, maybe, but as clear as day. I don't have it anymore.</p>
+  <p class="p fragment">Life is just more... complicated, it seems.</p>
 
-  <p class="p">The older I got, the more the world seemed to close around me even as it seemed to open. Wider in what was possible, narrower in what was actually still mine to reach for. Time, life, burdens, responsibilities, and other excuses seemingly weighed me down.</p>
+  <p class="p">Earlier in my life, I left my first job around twelve months in — and the choice was simpler and more straightforward.</p>
 
-  <p class="p">Some of it was only busyness. A book I couldn't finish because a screen kept pulling my eyes back to it. A walk outside that was never really outside, because some part of me stayed with the phone, waiting for a buzz, a missed message, a notification I'd have to answer for.</p>
+  <p class="p">Not because I was smarter or bolder than I am now, but because I knew less. I was too junior to matter — no one cared if I left. And that made it simpler because I had less to really figure out, all I had to do was move forward, on to the next step.</p>
 
-  <p class="p">There was no space left in the day to actually think — not think about something, just think, the way water thinks by moving.</p>
-
-  <p class="p">And some of it was age doing what age does: the confidence in myself grew larger every year, the sense of what I should be able to do by now — and at the very same time, what the world would still let me do, what time would still let me do, kept shrinking.</p>
-
-  <p class="p">I did not understand, for a long time, that both of these could be true together. That a self could grow bigger while its room to move grew smaller.</p>
-
-  <p class="p">That was the narrowness. Not less possibility — less time to reach it in.</p>
-
-  <p class="p">Somewhere in there, the stream stopped.</p>
+  <p class="p">The only optimization function was growth, or opportunity.</p>
 
   <div class="accent-wrap" data-observe>
-    <svg class="still-graphic" viewBox="0 0 120 66">
-      <circle class="ripple-ring" cx="60" cy="30" r="4"/>
-      <circle class="ripple-ring ring2" cx="60" cy="30" r="4"/>
-      <circle class="ripple-ring ring3" cx="60" cy="30" r="4"/>
-      <line class="still-line" x1="14" y1="54" x2="106" y2="54"/>
+    <p class="p">But now it's a bit different, you see — I move on from restlessness into uncertainty. The road ahead gets less concrete, less certain — there isn't a bridge anymore to the other side. There are many — each one, for some reason, pointing me toward a different version of my life, with a set of important questions... including:</p>
+    <svg class="accent-graphic" viewBox="0 0 120 66" aria-hidden="true">
+      <circle cx="10" cy="33" r="3" fill="var(--dusk)"/>
+      <line class="path-l" x1="10" y1="33" x2="100" y2="8"/>
+      <line class="path-l" x1="10" y1="33" x2="105" y2="22"/>
+      <line class="path-l" x1="10" y1="33" x2="108" y2="33"/>
+      <line class="path-l" x1="10" y1="33" x2="105" y2="45"/>
+      <line class="path-l" x1="10" y1="33" x2="97" y2="58"/>
+      <circle class="path-end" cx="100" cy="8" r="2.5"/>
+      <circle class="path-end" cx="105" cy="22" r="2.5"/>
+      <circle class="path-end" cx="108" cy="33" r="2.5"/>
+      <circle class="path-end" cx="105" cy="45" r="2.5"/>
+      <circle class="path-end" cx="97" cy="58" r="2.5"/>
     </svg>
-    <p class="p">Water that doesn't move is supposed to do one of three things: get bottled up, burst out, or go stagnant and die. Mine didn't burst. It just went still. Still, still, still…</p>
   </div>
 
-  <p class="p fragment">Until I noticed the stillness had a name, and the name was: my life has not moved much at all.</p>
+  <div class="question-block">
+    <p class="p fragment">Where would my life be in five years?</p>
+    <p class="p fragment">How would my health and the rest of my capacity for joy look?</p>
+    <p class="p fragment">What would my life stand for?</p>
+    <p class="p fragment">What does moving on say about me, what I'm leaving behind, and what I'm drawn to?</p>
+    <p class="p fragment">Will there be regrets?</p>
+  </div>
+
+  <p class="p">Uncertainty and fear certainly abound.</p>
+
+  <p class="p">But it's because the calculus of my river crossing was done a bit differently.</p>
+
+  <p class="p">I did not leave to move toward the next step on a ladder, but rather, to actively decide that the version and trajectory of my life today is not the one I'd be proud of — and staying longer would not give me the answers I want to the five questions I posed.</p>
+
+  <p class="p">So I left not toward something I want, but away from something I don't want.</p>
 
   <div class="accent-wrap" data-observe>
-    <svg class="rocks-cluster" viewBox="0 0 44 24">
-      <ellipse cx="22" cy="21" rx="20" ry="3" fill="#16232B" opacity="0.1"/>
-      <path class="rock rock1" d="M2 20 C2 12 8 7 13 8 C19 9 21 14 19 19 C17 22 5 22 2 20 Z" fill="#4F7C8C"/>
-      <path class="rock rock2" d="M22 20 C22 15 26 12 29 13 C33 14 34 17 32 20 C30 22 24 22 22 20 Z" fill="#6E9AA8" opacity="0.9"/>
-      <path class="rock rock3" d="M32 20 C32 16 35 14 38 15 C41 16 41 18 39 20 C37 21 33 21 32 20 Z" fill="#9FC4CC" opacity="0.85"/>
+    <p class="p">And that blank slate gets a bit scarier when you're in the middle of your career.</p>
+    <svg class="accent-graphic" viewBox="0 0 120 66" aria-hidden="true">
+      <path class="river-line" d="M2 40 Q20 30 35 40 T65 40 T95 40 T118 40"/>
+      <ellipse class="stone" cx="22" cy="37" rx="7" ry="4"/>
+      <ellipse class="stone" cx="42" cy="41" rx="7" ry="4"/>
+      <ellipse class="stone" cx="62" cy="36" rx="7" ry="4"/>
+      <ellipse class="stone" cx="82" cy="42" rx="7" ry="4"/>
+      <ellipse class="stone" cx="100" cy="37" rx="6" ry="3.5"/>
     </svg>
-    <p class="p fragment">I found rocks in the water.</p>
   </div>
 
-  <p class="p">Some had simply rolled there — the ordinary weight of getting older, of days filling up faster than I could empty them. But others I had placed myself, on purpose, half-knowing what I was doing. Because to let the water move sometimes means going somewhere I was afraid to go. I was afraid of moving the rocks.</p>
+  <p class="p thesis">Do all wanderers and adventurers fear such a river crossing?</p>
 
-  <p class="p">And afraid, just as much, of what would happen if the water actually got through.</p>
+  <p class="p">I started tracing the entirety of my life, thinking maybe I wouldn't be in this situation had I chosen differently years ago — if I'd simply shifted a few decisions.</p>
 
-  <p class="p">I don't have a lesson on the other side of that fear. What I have instead is this: at some point I understood I had no choice left but to do something with what was in front of me.</p>
+  <p class="p">I could have been in the US, facing such forks in the path, rather than in the Philippines — I'm choosing with a limited set of decisions because of earlier bets I made to be back in the region.</p>
 
-  <div class="accent-wrap" data-observe>
-    <div class="triad">
-      <svg viewBox="0 0 24 20"><path d="M2 10 L20 10 M15 5 L20 10 L15 15" fill="none" stroke="#4F7C8C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      <svg viewBox="0 0 24 20"><path d="M2 10 Q12 -2 12 10 Q12 22 22 10" fill="none" stroke="#4F7C8C" stroke-width="1.6" stroke-linecap="round"/><circle cx="12" cy="10" r="3" fill="#16232B" opacity="0.35"/></svg>
-      <svg viewBox="0 0 24 20"><circle cx="8" cy="12" r="5" fill="#16232B" opacity="0.3"/><path d="M14 14 Q17 8 21 14" fill="none" stroke="#4F7C8C" stroke-width="1.6" stroke-linecap="round"/></svg>
-    </div>
-    <p class="p">Move what I could move. Flow around what wouldn't move. Sit beside what was only ever going to stay, and keep going anyway. Staying still, it turned out, was the one option that had quietly stopped being available to me.</p>
-  </div>
+  <p class="p">Had I made the wrong choice?</p>
 
-  <p class="p">These pages are not that lesson, if there is one.</p>
+  <p class="p">But there's no use in asking that anymore.</p>
 
-  <p class="p">They are not arranged to teach or to resolve anything — they are arranged the way thinking actually happens, by feeling and by theme rather than by logic, moving between what already happened, what is happening, and what hasn't yet, without much order to any of it.</p>
+  <p class="p thesis">Where does the fear come from, honestly?</p>
 
-  <p class="p">This is only my own sense of time, set down as honestly as I could set it down.</p>
+  <p class="p">That people would see inconsistencies in some career narratives or transitions, or that I couldn't articulate neatly what my life stands for? Would it lead to a life of shame and regret?</p>
 
-  <p class="p">If you are reading this, I don't imagine you the way age or a milestone would define you.</p>
+  <p class="p">But where do those fears really stem from, and why would I want to answer these questions? They don't seem like questions I need to answer, they don't seem like questions that would help me — rather it is only for what people see as a sketched, summarized version of me.</p>
 
-  <p class="p">I imagine you at whatever point the world has started to feel like too much to carry — the challenges ahead too large, the ground too uncertain.</p>
+  <p class="p">Choices in our own self-image need not weigh us so deeply. It only constrains the freedom we have and turns it into a burden.</p>
 
-  <p class="p">I don't know if there's anything here that will help.</p>
-
-  <p class="p">But if it helps at all, I hope it's this: that your current is not the only one that has gone still. Somewhere else in this same universe, another stream stopped too — and found its way to move again, however it could.</p>
+  <p class="p">All I can really do is see myself as having the privilege — that I have the capacity to wipe the board clean. And with that comes a gift, to write out multiple versions and pathways of myself — each one more exciting and bolder than the last — with that comes the freedom to choose many crossings.</p>
 
   <div class="accent-wrap" data-observe>
-    <svg class="fall-graphic" viewBox="0 0 120 66">
-      <line class="fall-l" x1="35" y1="6" x2="30" y2="60"/>
-      <line class="fall-l" x1="60" y1="4" x2="58" y2="60"/>
-      <line class="fall-l" x1="85" y1="6" x2="88" y2="60"/>
+    <p class="p">Because why not? Who has affixed this mindset that we need to cross the river by laying down one step at a time, or by crossing bridges that exist?</p>
+    <svg class="accent-graphic" viewBox="0 0 120 66" aria-hidden="true">
+      <circle cx="10" cy="33" r="3" fill="var(--current)"/>
+      <line class="path-r" x1="10" y1="33" x2="100" y2="8"/>
+      <line class="path-r" x1="10" y1="33" x2="105" y2="22"/>
+      <line class="path-r" x1="10" y1="33" x2="108" y2="33"/>
+      <line class="path-r" x1="10" y1="33" x2="105" y2="45"/>
+      <line class="path-r" x1="10" y1="33" x2="97" y2="58"/>
     </svg>
-    <p class="p">There is a place still yours to find. I hope, in some small way, these pages help move your stream along — remove the rocks holding back your waterfall.</p>
+    <p class="p">I can make a bridge, or hop over, or swim back if I wanted to. And when we remove the notion there is only one way forward — we realize how free we can be.</p>
   </div>
 
 </main>
